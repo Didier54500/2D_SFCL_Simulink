@@ -1,0 +1,21 @@
+component Cth_Hast
+% UseFunction1
+% This shows a Simscape component file which uses a Simscape function.
+
+% Copyright 2017 The MathWorks, Inc.     
+    inputs
+        T = 0;
+        L = 0;
+        l = 0;
+        Ep = 0;
+        Rhom = 0 ;
+    end
+    outputs
+        Cth = 0;
+        Cp_Hast = 0
+    end
+    equations
+        Cp_Hast == 2.326490949694242e+02 * atan(0.014268442442418 * T - 0.832594267997145) - 67.160904733742800 * atan((-1.089287905961677 * T) - 3.077781063823948e+03); %J/(kg.K)
+        Cth == Ep*l*L*Rhom*Cp_Hast;
+    end
+end

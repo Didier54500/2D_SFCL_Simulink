@@ -1,0 +1,21 @@
+component Cth_Ag
+% UseFunction1
+% This shows a Simscape component file which uses a Simscape function.
+
+% Copyright 2017 The MathWorks, Inc.     
+    inputs
+        T = 0;
+        L = 0;
+        l = 0;
+        Ep = 0;
+        Rhom = 0 ;
+    end
+    outputs
+        Cth = 0;
+        Cp_Ag = 0
+    end
+    equations
+        Cp_Ag == (1.647113837760861e+02*atan(0.026594842053622*T-0.543455925749649)); %J/(kg.K)
+        Cth == Ep*l*L*Rhom*Cp_Ag;
+    end
+end

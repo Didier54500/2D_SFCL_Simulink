@@ -1,0 +1,30 @@
+component Res_Elec_Ag
+% UseFunction1
+% This shows a Simscape component file which uses a Simscape function.
+
+% Copyright 2017 The MathWorks, Inc.     
+    inputs
+        T = 0;
+        L = 0;
+        l = 0;
+        Ep = 0;
+    end
+    outputs
+        R_L = 0;
+        R_Ep = 0 ;
+        rho = 0;
+    end
+    equations
+        rho == 8.534401245546825e-06*atan(7.099612118916145e-06*T-2.208156085246013e-04);
+        R_L == if T<77 
+            0;
+        else
+            rho * L / (Ep*l)/2.0;
+        end
+        R_Ep == if T<77
+            0;
+        else
+            rho * Ep / (L*l)/2.0;
+        end
+    end
+end

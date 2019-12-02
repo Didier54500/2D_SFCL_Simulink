@@ -1,0 +1,22 @@
+component Rth_Hast
+% UseFunction1
+% This shows a Simscape component file which uses a Simscape function.
+
+% Copyright 2017 The MathWorks, Inc.     
+    inputs
+        L = 0;
+        l = 0;
+        Ep = 0;
+        T = 0;
+    end
+    outputs
+        Rth_L  = 0.000001;
+        Rth_Ep = 0.000001;
+        k_Hast = 0.000001;
+    end
+    equations
+        k_Hast == 7.926682734903162 * atan(0.014383288655519 * T + 0.408064343488483);
+        Rth_L  == (1/k_Hast) * L/(Ep * l) * (1/2);
+        Rth_Ep == (1/k_Hast) * Ep/(L * l) * (1/2);
+    end
+end

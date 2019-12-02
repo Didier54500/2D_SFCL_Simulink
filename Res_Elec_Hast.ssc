@@ -1,0 +1,22 @@
+component Res_Elec_Hast
+% UseFunction1
+% This shows a Simscape component file which uses a Simscape function.
+
+% Copyright 2017 The MathWorks, Inc.     
+    inputs
+        T = 0;
+        L = 0;
+        l = 0;
+        Ep = 0;
+    end
+    outputs
+        R_L = 0;
+        R_Ep = 0 ;
+        rho = 0;
+    end
+    equations
+        rho == 9.366651051843466e-04 * atan(1.114813293972694e-07 * T +0.001309544749298);
+        R_L == rho * L / (Ep*l)/2.0;
+        R_Ep == rho * Ep / (L*l)/2.0;
+    end
+end

@@ -1,0 +1,34 @@
+component Res_Elec_YBCO_Ep
+% UseFunction1
+% This shows a Simscape component file which uses a Simscape function.
+
+% Résisitance dans la demi longueur     
+    inputs
+        I = 0;
+        T = 0;
+        L = 0;
+        l = 0;
+        Ep = 0;
+        Ec = 0;
+        Tc = 0;
+        T0 = 0;
+        rho_Tc = 0 ;
+        a = 0;
+        Jc0 = 0 ;
+        n = 0 ;
+    end
+    outputs
+        R_ep = 0;
+       % rho_lp = 0;
+        rho_n = 0.000001 ;
+    end
+    equations
+       % rho_lp == (Ec / (Jc0 * ((Tc - T)/(Tc - T0)))) * ( abs((I / (Ep * l))) / (Jc0 * ((Tc - T)/(Tc - T0))))^(n-1);
+        rho_n == rho_Tc + a * (T - Tc);
+        R_ep == if T<(Tc-0.001) 
+            ((Ec / (Jc0 * ((Tc - T)/(Tc - T0)))) * ( abs((I / (L * l))) / (Jc0 * ((Tc - T)/(Tc - T0))))^(n-1) * rho_n)/(((Ec / (Jc0 * ((Tc - T)/(Tc - T0)))) * ( abs((I / (L * l))) / (Jc0 * ((Tc - T)/(Tc - T0))))^(n-1)) + rho_n) * Ep / (L*l)/2.0;
+            else
+            rho_n * Ep / (L*l)/2.0;
+        end
+    end
+end

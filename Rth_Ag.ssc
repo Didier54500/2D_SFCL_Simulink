@@ -1,0 +1,22 @@
+component Rth_Ag
+% UseFunction1
+% This shows a Simscape component file which uses a Simscape function.
+
+% Copyright 2017 The MathWorks, Inc.     
+    inputs
+        L = 0;
+        l = 0;
+        Ep = 0.000000001;
+        T = 0;
+    end
+    outputs
+        Rth_L = 0;
+        Rth_Ep = 0 ;
+        k_Ag = 0;
+    end
+    equations
+        k_Ag == 2.183153836741123e+07*(1-atan(1.649505182323929e+03*T-5.489345285822393e+04))+1.246175024499636e+07;
+        Rth_L  == (1/k_Ag) * L/(Ep * l) * (1/2);
+        Rth_Ep == (1/k_Ag) * Ep/(L * l) * (1/2);
+    end
+end
